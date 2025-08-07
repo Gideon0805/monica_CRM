@@ -19,18 +19,18 @@ Vue.filter('formatDate', function(value) {
 window.marked = require('marked');
 
 // i18n
-import messages from '../../public/js/langs/en.json';
+import messages from '../../public/js/langs/zh-TW.json';
 import pluralization from './pluralization.js';
 
 export default {
   i18n: new VueI18n({
-    locale: 'en', // set locale
+    locale: 'zh-TW', // set locale
     fallbackLocale: 'en',
-    messages: {'en': messages},
+    messages: {'zh-TW': messages},
     pluralizationRules: pluralization,
   }),
-  
-  loadedLanguages : ['en'], // our default language that is preloaded
+
+  loadedLanguages : ['zh-TW'], // our default language that is preloaded
   
   _setI18nLanguage (lang) {
     this.i18n.locale = lang;
@@ -56,7 +56,7 @@ export default {
       if (set) {
         this._setI18nLanguage(lang);
       }
-      moment.locale(lang === 'zh' ? 'zh-cn' : lang);
+      moment.locale(lang === 'zh' ? 'zh-cn' : lang === 'zh-TW' ? 'zh-tw' : lang);
       return i18n;
     });
   }
